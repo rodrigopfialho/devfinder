@@ -1,6 +1,6 @@
-import { Sun } from 'phosphor-react'
+import { Buildings, Link, MapPin, Sun, TwitterLogo } from 'phosphor-react'
 import {MagnifyingGlass} from 'phosphor-react'
-import {Container, Content, Header, Card, Search} from './styled'
+import {Container, Content, Header, Card, Search, DatasGit} from './styled'
 import Github from '../assets/github.png'
 
 export function SearchGit() {
@@ -58,7 +58,30 @@ export function SearchGit() {
                             </div>
                         </div>
                     </div>
+
+                    <DatasGit>
+                        <div className='datasgithub'>
+                            <div>
+                                <MapPin size={22} />
+                                <span>Fortaleza</span>
+                            </div>
+                            <div>
+                                <TwitterLogo size={22} />
+                                <span>Not Avaliable</span>
+                               
+                            </div>
+                            <div>
+                                <Link size={22} />
+                                <span>https://github.blog</span>
+                            </div>
+                            <div>
+                                <Buildings size={22} />
+                                <span>agithub</span>
+                            </div>
+                        </div>
+                    </DatasGit>
                 </Card>
+
             </Content>
         </Container>
     )

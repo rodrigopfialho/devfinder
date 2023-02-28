@@ -71,7 +71,7 @@ export const Search = styled.div`
 export const Card = styled.section`
     background-color: var(--blue);
     width: 100%;
-    height: 100% ;
+    height: 100%;
     border-radius: 12px;
     font-family: 'PT Sans', sans-serif;
     display: flex ;
@@ -91,12 +91,18 @@ export const Card = styled.section`
             border-radius: 50%;
             margin: 2rem ;
         }
+
+        .bio, .data {
+            opacity: 0.5;
+            
+        }
     }
 
     .data{
-        margin-top: 30px;
-        
+        margin-top: 30px;    
     }
+
+    
 
     div > div {
         display: flex;
@@ -129,18 +135,41 @@ export const Card = styled.section`
             display: flex ;
             flex-direction: row ;
             padding: 0;
-        }     
+        }  
+        
+        div > div {
+            display: flex ;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            span {
+                opacity: 0.5;
+            }
+
+            strong {
+                font-weight: bold;
+                margin-top: 5px;
+            }
+        }
+    }
+`;
+
+export const DatasGit = styled.div`
+    display: flex;    
+    margin: 0 auto;
+    background-color: red ;
+
+    .datasgithub {
+        width: 100%;
+        background-color: blue;
+        /* display: flex; */
+        /* display: grid; */
+        /* grid-template-columns: 1fr 1fr; */
+        /* justify-items: stretch; */
+        flex-direction: row ;
+        padding: 0;
+        
     }
 
-    .infoData {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-
-        /* span {
-            display: block ;
-            margin-right: 10px;
-        } */
-    }
 `;
