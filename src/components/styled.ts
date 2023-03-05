@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Github from '../assets/github.png'
 
 export const Container = styled.main`
     display: flex ;
@@ -87,9 +88,11 @@ export const Card = styled.section`
         img {
             width: 5rem;
             height: 5rem ;
-            background-color: red ;
+            /* background-color: red ; */
             border-radius: 50%;
+            border: 1px solid white;
             margin: 2rem ;
+            /* background-image: var(Github) ; */
         }
 
         .bio, .data {
@@ -156,19 +159,42 @@ export const Card = styled.section`
 `;
 
 export const DatasGit = styled.div`
+    width: 100%;
     display: flex;    
+    grid-template-columns: 1fr 1fr;
+    gap: 10rem;
+    height: 10rem;
     margin: 0 auto;
+    align-items: baseline ;
     background-color: red ;
 
     .datasgithub {
-        width: 100%;
+        width: 80%;
         background-color: blue;
-        /* display: flex; */
-        /* display: grid; */
-        /* grid-template-columns: 1fr 1fr; */
-        /* justify-items: stretch; */
-        flex-direction: row ;
+        display: flex;
+        margin: 0 auto;
+        
+        flex-direction: row;
+        flex-wrap: wrap ;
         padding: 0;
+        /* justify-content: space-around; */
+        /* align-items: center; */
+
+        div {
+            /* background-color: gray; */
+            /* width: 100%; */
+            display: flex;
+            flex-direction: row;
+            /* justify-content: space-around ; */
+            span {
+                margin-left: 10px;
+            }
+        }
+
+        .gitstyle:first-child() {
+            margin-left:100px ;
+            background-color: green ;
+        }
         
     }
 
