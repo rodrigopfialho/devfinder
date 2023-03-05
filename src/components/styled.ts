@@ -66,6 +66,12 @@ export const Search = styled.div`
         width: 6rem;
         height: 2.7rem;
         border-radius: 10px ;
+
+        transition: all 0.3s ;
+    }
+
+    button:hover {
+        opacity: 0.8 ;
     }
 `;
 
@@ -160,42 +166,41 @@ export const Card = styled.section`
 
 export const DatasGit = styled.div`
     width: 100%;
-    display: flex;    
-    grid-template-columns: 1fr 1fr;
-    gap: 10rem;
-    height: 10rem;
+    display: flex;   
     margin: 0 auto;
-    align-items: baseline ;
-    background-color: red ;
 
     .datasgithub {
-        width: 80%;
-        background-color: blue;
-        display: flex;
+        width:70%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
         margin: 0 auto;
-        
+        /* gap: 1rem; */
         flex-direction: row;
         flex-wrap: wrap ;
-        padding: 0;
-        /* justify-content: space-around; */
-        /* align-items: center; */
+        padding: 0 ;
 
         div {
-            /* background-color: gray; */
-            /* width: 100%; */
+            width: 100%;
+            height: 40px;
             display: flex;
             flex-direction: row;
-            /* justify-content: space-around ; */
+            margin-right: 30px;
+
             span {
                 margin-left: 10px;
-            }
-        }
 
-        .gitstyle:first-child() {
-            margin-left:100px ;
-            background-color: green ;
-        }
-        
+                a {
+                    color: white;
+                    cursor: pointer;
+
+                    transition: all 0.3s ;
+                }
+
+                a:hover {
+                    opacity: 0.8;
+                }
+            }
+        }  
     }
 
 `;

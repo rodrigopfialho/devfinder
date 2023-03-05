@@ -2,14 +2,15 @@ import { Buildings, Link, MapPin, Sun, TwitterLogo } from 'phosphor-react'
 import {MagnifyingGlass} from 'phosphor-react'
 import {Container, Content, Header, Card, Search, DatasGit} from './styled'
 import Github from '../assets/github.png'
-import { useEffect, useState } from 'react';
+import {useState } from 'react';
+import dayjs from 'dayjs'
 import { api } from '../services/api';
 
 interface UserProps {
     name: string;
     login: string;
-    avatar_url: string;
     created_at: Date;
+    avatar_url: string;
     public_repos: number;
     followers: number;
     following: number;
@@ -19,16 +20,16 @@ interface UserProps {
     company: string;
 }
 
-export function SearchGit({}: UserProps) {
+export function SearchGit() {
     const [userName, setUserName] = useState('')
-    const [login, setlogin] = useState('@octocat')
+    const [login, setlogin] = useState('octocat')
     const [name, setName] = useState('The Octocat')
     const [avatar, setAvatar] = useState(Github)
     const [createdAt, setCreatedAt] = useState('Join 25 jun 2011')
     const [publicRepos, setPublicRepos] = useState(8)
     const [followers, setFollowers] = useState(3938)
     const [following, setFollowing] = useState(9)
-    const [location, setLocation] = useState('Fortaleza')
+    const [location, setLocation] = useState('San Francisco"')
     const [blog, setBlog] = useState('Http://github.blog')
     const [twitterUsername, settwitterUsername] = useState('Not Avaliable')
     const [company, setCompany] = useState('agithub')
@@ -36,7 +37,7 @@ export function SearchGit({}: UserProps) {
 
     const handleSearch = ()  => {
         api.get<UserProps>(`/${userName}`)
-            .then((res) => {
+            .then((res: any) => {
                 setName(res.data.name)
                 setAvatar(res.data.avatar_url)
                 setPublicRepos(res.data.public_repos)
@@ -47,8 +48,14 @@ export function SearchGit({}: UserProps) {
                 settwitterUsername(res.data.twitter_username)
                 setCompany(res.data.company)
                 setlogin(res.data.login)
+                setCreatedAt(res.data.created_at)
             })
     }
+
+    const day = dayjs(createdAt).format('DD')
+    const month = dayjs(createdAt).format('MMM')
+    const year = dayjs(createdAt).format('YYYY')
+
 
     return (
         <Container>
@@ -86,7 +93,7 @@ export function SearchGit({}: UserProps) {
                             </div>
                         </div>
 
-                        <strong className='data'>Join 25 jun 2011</strong>
+                        <strong className='data'>Joined {day} {month} {year}</strong>
                     </div>
 
                     <div className='info'>
@@ -119,7 +126,11 @@ export function SearchGit({}: UserProps) {
                             </div>
                             <div>
                                 <Link size={22} />
-                                <span>{blog}</span>
+                                <span>
+                                    <a href={blog} target="_blank"> 
+                                        {blog}
+                                    </a>
+                                </span>
                             </div>
                             <div className='gitstyle'>
                                 <Buildings size={22} />
