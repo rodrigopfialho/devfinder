@@ -3,7 +3,7 @@
 ## Desafio proposto pelo site Frontend Mentor. Buscar usuários no GitHub 
 
 <p align="center"> 
-    <img src="./assets/p1.png">
+    <img src="/assets/p1.png">
 </p>
 
 # TECNOLOGIAS
