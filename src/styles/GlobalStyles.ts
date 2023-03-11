@@ -1,6 +1,6 @@
 import {createGlobalStyle} from 'styled-components'
 
-export default  createGlobalStyle`
+export const GlobalStyles = createGlobalStyle`
 
     html, body {
         max-width: 1440px;

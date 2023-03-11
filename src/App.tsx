@@ -1,5 +1,6 @@
 import { SearchGit } from "./components"
-import  GlobalStyles  from "./styles/global"
+// import  {GlobalStyles}  from "./styles/global"
+
 
 import { Container } from "./styles/styles" 
 import { DefaultTheme, ThemeProvider } from "styled-components"
@@ -8,6 +9,7 @@ import usePersistedState from "./utils/usePersistedState"
 
 import dark from "./styles/themes/dark"
 import light from "./styles/themes/light"
+import { GlobalStyles } from "./styles/GlobalStyles"
 
 function App() {
 
