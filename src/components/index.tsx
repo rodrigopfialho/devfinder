@@ -1,10 +1,22 @@
-import { Buildings, Link, MapPin, Sun, TwitterLogo } from 'phosphor-react'
-import {MagnifyingGlass} from 'phosphor-react'
-import {Container, Content, Header, Card, Search, DatasGit} from './styled'
+import { Buildings, Link, MapPin, Moon, Sun, TwitterLogo } from 'phosphor-react'
+import { MagnifyingGlass } from 'phosphor-react'
+import { Container, Content, Header, Card, Search, DatasGit } from './styled'
 import Github from '../assets/github.png'
-import {useState } from 'react';
+import { useContext, useState } from 'react';
 import dayjs from 'dayjs'
+
 import { api } from '../services/api';
+
+import usePersistedState from '../utils/usePersistedState';
+import { DefaultTheme, ThemeContext } from 'styled-components';
+
+import light from '../styles/themes/light';
+import dark from '../styles/themes/dark';
+import Loading from 'react-loading';
+
+interface Props {
+    handleTheme(): void;
+}
 
 interface UserProps {
     name: string;
@@ -20,7 +32,7 @@ interface UserProps {
     company: string;
 }
 
-export function SearchGit() {
+export function SearchGit({handleTheme}: Props) {
     const [userName, setUserName] = useState('')
     const [login, setlogin] = useState('octocat')
     const [name, setName] = useState('The Octocat')
@@ -33,9 +45,10 @@ export function SearchGit() {
     const [blog, setBlog] = useState('Http://github.blog')
     const [twitterUsername, settwitterUsername] = useState('Not Avaliable')
     const [company, setCompany] = useState('agithub')
-    
 
-    const handleSearch = ()  => {
+    const {colors, title} = useContext(ThemeContext);
+
+    const handleSearch: any = () => {
         api.get<UserProps>(`/${userName}`)
             .then((res: any) => {
                 setName(res.data.name)
@@ -58,18 +71,28 @@ export function SearchGit() {
 
 
     return (
-        <Container>
-            <Content>
-                <Header>
-                    <h3>devfinder</h3>
-                    <div>
-                       <p>LIGHT</p>
-                        <Sun size={26} />
-                    </div>
-                </Header>
-                <Search>
-                    <MagnifyingGlass size={32} />
-                        <input 
+            <Container>
+                <Content>
+                    <Header 
+                        onClick={handleTheme}
+                    >
+                        <h3>devfinder</h3>
+                        {title === 'light' ?
+                            <div>
+                                <p>DARK</p>
+                                <Moon size={26} />  
+                            </div>
+                            :
+                            <div>
+                                <p>LIGHT</p>
+                                <Sun size={26} />
+                            </div>
+                        }                        
+                    </Header>
+                    
+                    <Search>
+                        <MagnifyingGlass size={32} />
+                        <input
                             type="text"
                             onChange={(e) => setUserName(e.target.value)}
                             placeholder='Search GitHub username..' />
@@ -77,70 +100,71 @@ export function SearchGit() {
                         <button type='button' onClick={handleSearch}>
                             Search
                         </button>
-                </Search>
-                <Card>
-                    <div>
-                            <img 
+                    </Search>
+                    <Card>
+                        <div>
+                            <img
                                 src={avatar}
                             />
 
-                        <div>
-                            <h1>{name}</h1>
-                            <span className='profile'>@{login}</span>
-
-                            <div className='bio'>
-                                <span>This profile has no bio</span>
-                            </div>
-                        </div>
-
-                        <strong className='data'>Joined {day} {month} {year}</strong>
-                    </div>
-
-                    <div className='info'>
-                        <div>
-                            <div className='repos infoData'>
-                                <span>Repos</span>
-                                <strong>{publicRepos}</strong>
-                            </div>
-                            <div className='followers infoData'>
-                                <span>Followers</span>
-                                <strong>{followers}</strong>
-                            </div>
-                            <div className='following infoData'>
-                                <span>Following</span>
-                                <strong>{following}</strong>
-                            </div>
-                        </div>
-                    </div>
-
-                    <DatasGit>
-                        <div className='datasgithub'>
                             <div>
-                                <MapPin size={22} />
-                                <span>{location}</span>
+                                <h1>{name}</h1>
+                                <span className='profile'>@{login}</span>
+
+                                <div className='bio'>
+                                    <span>This profile has no bio</span>
+                                </div>
                             </div>
-                            <div className='gitstyle'>
-                                <TwitterLogo size={22} />
-                                <span>{twitterUsername === null ? 'Not Avaliable' : twitterUsername}</span>
-                               
-                            </div>
+
+                            <strong className='data'>Joined {day} {month} {year}</strong>
+                        </div>
+
+                        <div className='info'>
                             <div>
-                                <Link size={22} />
-                                <span>
-                                    <a href={blog} target="_blank"> 
-                                        {blog}
-                                    </a>
-                                </span>
-                            </div>
-                            <div className='gitstyle'>
-                                <Buildings size={22} />
-                                <span>{company}</span>
+                                <div className='repos infoData'>
+                                    <span>Repos</span>
+                                    <strong>{publicRepos}</strong>
+                                </div>
+                                <div className='followers infoData'>
+                                    <span>Followers</span>
+                                    <strong>{followers}</strong>
+                                </div>
+                                <div className='following infoData'>
+                                    <span>Following</span>
+                                    <strong>{following}</strong>
+                                </div>
                             </div>
                         </div>
-                    </DatasGit>
-                </Card>
 
-            </Content>
-        </Container>
+                        <DatasGit>
+                            <div className='datasgithub'>
+                                <div>
+                                    <MapPin size={22} />
+                                    <span>{location}</span>
+                                </div>
+                                <div className='gitstyle'>
+                                    <TwitterLogo size={22} />
+                                    <span>{twitterUsername === null ? 'Not Avaliable' : twitterUsername}</span>
+
+                                </div>
+                                <div>
+                                    <Link size={22} />
+                                    <span>
+                                        <a href={blog} target="_blank">
+                                            {blog}
+                                        </a>
+                                    </span>
+                                </div>
+                                <div className='gitstyle'>
+                                    <Buildings size={22} />
+                                    <span>{company}</span>
+                                </div>
+                            </div>
+                        </DatasGit>
+                    </Card>
+
+                </Content>
+
+            </Container>
     )
 }

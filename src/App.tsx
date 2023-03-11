@@ -1,13 +1,29 @@
 import { SearchGit } from "./components"
-import { GlobalStyles } from "./styles/Global"
+import  GlobalStyles  from "./styles/global"
+
 import { Container } from "./styles" 
+import { DefaultTheme, ThemeProvider } from "styled-components"
+
+import usePersistedState from "./utils/usePersistedState"
+
+import dark from "./styles/themes/dark"
+import light from "./styles/themes/light"
 
 function App() {
+
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light)
+
+  const themeToggler = () => {
+      setTheme(theme.title === 'light' ? dark : light)
+  }
+
   return (
-    <Container>
-      <SearchGit />
-      <GlobalStyles />
-    </Container>
+    <ThemeProvider theme={theme}>
+      <Container>
+        <SearchGit handleTheme={themeToggler}/>
+        <GlobalStyles />
+      </Container>
+    </ThemeProvider>  
   )
   
 }

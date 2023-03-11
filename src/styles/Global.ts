@@ -1,6 +1,6 @@
 import {createGlobalStyle} from 'styled-components'
 
-export const GlobalStyles = createGlobalStyle`
+export default  createGlobalStyle`
     :root {
         --blue: #1f2a48;
         --blueLight: #0079fe;

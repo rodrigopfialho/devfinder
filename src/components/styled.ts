@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Github from '../assets/github.png'
 
 export const Container = styled.main`
     display: flex ;
@@ -19,9 +18,11 @@ export const Header = styled.header`
     align-items: baseline ;
     font-family: 'PT Sans', sans-serif;
     margin-bottom: 1.2rem ;
+    cursor: pointer ;
 
-   > p {
-        font-size: 1.5rem;
+    p {
+        font-size: 1rem;
+        font-weight: bolder;
     }
 
     div {
@@ -34,10 +35,10 @@ export const Header = styled.header`
 export const Search = styled.div`
     width: 45rem;
     height: 3.6rem ;
-    background-color: var(--blue);
+    background-color: ${props => props.theme.colors.secundary};
     display: flex;
     align-items: center;
-    color: var(--white);
+    color: ${props => props.theme.title};
     border-radius: 12px;
     padding: 10px;
     margin-bottom: 2rem ;
@@ -46,9 +47,9 @@ export const Search = styled.div`
     input {
         width: 100%;
         height: 2.2rem ;
-        background-color: var(--blue);
+        background-color: ${props => props.theme.colors.secundary};
         border: none;
-        color: var(--white);
+        color: ${props => props.theme.colors.text};
         font-size: 1.2rem;
         margin-left: 10px ;
     }
@@ -59,10 +60,10 @@ export const Search = styled.div`
     }
 
     button {
-        background-color: var( --blueLight) ;
+        background-color: ${props => props.theme.colors.primaryButton};
         border: none;
         cursor: pointer;
-        color: var(--white);
+        color: ${props => props.theme.colors.text};
         width: 6rem;
         height: 2.7rem;
         border-radius: 10px ;
@@ -76,7 +77,7 @@ export const Search = styled.div`
 `;
 
 export const Card = styled.section`
-    background-color: var(--blue);
+    background-color: ${props => props.theme.colors.secundary};
     width: 100%;
     height: 100%;
     border-radius: 12px;
@@ -94,11 +95,10 @@ export const Card = styled.section`
         img {
             width: 5rem;
             height: 5rem ;
-            /* background-color: red ; */
+           
             border-radius: 50%;
             border: 1px solid white;
             margin: 2rem ;
-            /* background-image: var(Github) ; */
         }
 
         .bio, .data {
@@ -127,14 +127,14 @@ export const Card = styled.section`
             display: flex;
             align-items: flex-start ;
             padding-bottom: 1px;
-            color: var(--blueLight);
+            color: ${props => props.theme.colors.primaryButton};
         }
     }
 
     .info {
         width: 63%;
         height: 5rem ;
-        background-color: var(--blueDark);
+        background-color: ${props => props.theme.colors.background};
         margin: 0 auto;
         border-radius: 10px;
 
@@ -174,7 +174,6 @@ export const DatasGit = styled.div`
         display: grid;
         grid-template-columns: 1fr 1fr;
         margin: 0 auto;
-        /* gap: 1rem; */
         flex-direction: row;
         flex-wrap: wrap ;
         padding: 0 ;
@@ -190,7 +189,7 @@ export const DatasGit = styled.div`
                 margin-left: 10px;
 
                 a {
-                    color: white;
+                    color: ${props => props.theme.colors.text};
                     cursor: pointer;
 
                     transition: all 0.3s ;

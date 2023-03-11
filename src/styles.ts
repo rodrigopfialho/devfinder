@@ -4,6 +4,6 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
 
-    background-color: var(--blueDark);
-    color: var(--white)
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
 `;
