@@ -1,7 +1,7 @@
 import { SearchGit } from "./components"
 import  GlobalStyles  from "./styles/global"
 
-import { Container } from "./styles" 
+import { Container } from "./styles/styles" 
 import { DefaultTheme, ThemeProvider } from "styled-components"
 
 import usePersistedState from "./utils/usePersistedState"
