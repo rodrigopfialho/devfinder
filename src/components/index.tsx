@@ -74,16 +74,16 @@ export function SearchGit({handleTheme}: Props) {
             <Container>
                 <Content>
                     <Header 
-                        onClick={handleTheme}
+                        
                     >
                         <h3>devfinder</h3>
                         {title === 'light' ?
-                            <div>
+                            <div onClick={handleTheme}>
                                 <p>DARK</p>
                                 <Moon size={26} />  
                             </div>
                             :
-                            <div>
+                            <div onClick={handleTheme}>
                                 <p>LIGHT</p>
                                 <Sun size={26} />
                             </div>

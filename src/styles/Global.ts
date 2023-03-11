@@ -1,12 +1,6 @@
 import {createGlobalStyle} from 'styled-components'
 
 export default  createGlobalStyle`
-    :root {
-        --blue: #1f2a48;
-        --blueLight: #0079fe;
-        --blueDark: #141c2f;
-        --white: #ffffff;
-    }
 
     html, body {
         max-width: 1440px;

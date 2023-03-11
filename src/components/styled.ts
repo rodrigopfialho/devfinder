@@ -18,7 +18,8 @@ export const Header = styled.header`
     align-items: baseline ;
     font-family: 'PT Sans', sans-serif;
     margin-bottom: 1.2rem ;
-    cursor: pointer ;
+    
+    width: 45rem;
 
     p {
         font-size: 1rem;
@@ -29,6 +30,7 @@ export const Header = styled.header`
         display: flex;
         align-items: center ;
         gap: 15px;
+        cursor: pointer ;
     }
 `;
 
