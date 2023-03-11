@@ -13,7 +13,7 @@ import { GlobalStyles } from "./styles/GlobalStyles"
 
 function App() {
 
-  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', light)
+  const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', dark)
 
   const themeToggler = () => {
       setTheme(theme.title === 'light' ? dark : light)
